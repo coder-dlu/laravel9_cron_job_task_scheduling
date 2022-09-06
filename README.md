@@ -97,10 +97,59 @@ class DemoCron extends Command
 | ->monthlyOn(4, ’15:00′);         |  Run the task every month on the 4th at 15:00      |
 | ->quarterly();                   |  Run the task every quarter                        |
 | ->yearly();                      |  Run the task every year                           |
-| ->timezone(‘America/New_York’);  |  Set the timezone                                  |   
+| ->timezone(‘America/New_York’);  |  Set the timezone                                  |  
 
-
-
+- Vào app/Console/Kernel.php
 ```Dockerfile
-php artisan migrate
+<?php
+  
+namespace App\Console;
+  
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+  
+class Kernel extends ConsoleKernel
+{
+    /**
+     * Define the application's command schedule.
+     *
+     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @return void
+     */
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('demo:cron')
+                 ->everyMinute();
+    } 
+  
+    /**
+     * Register the commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        $this->load(__DIR__.'/Commands');
+   
+        require base_path('routes/console.php');
+    }
+}
+```
+## 4: Run Scheduler Command For Test
+```Dockerfile
+php artisan schedule:run
+```
+- storage/logs/laravel.php
+```Dockerfile
+[2022-03-01 03:51:02] local.INFO: Cron Job running at 2022-03-01 03:51:02  
+[2022-03-01 03:52:01] local.INFO: Cron Job running at 2022-03-01 03:52:01  
+[2022-03-01 03:53:02] local.INFO: Cron Job running at 2022-03-01 03:53:02 
+```
+## 5:  Cron Job Setup on Server
+```Dockerfile
+crontab -e
+```
+- Bây giờ, thêm dòng dưới đây vào tệp crontab. đảm bảo rằng bạn cần đặt đường dẫn dự án của mình một cách chính xác trên đó
+```Dockerfile
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
