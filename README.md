@@ -96,8 +96,7 @@ class DemoCron extends Command
 | ->monthlyOn(4, ’15:00′);         |  Run the task every month on the 4th at 15:00      |
 | ->quarterly();                   |  Run the task every quarter                        |
 | ->yearly();                      |  Run the task every year                           |
-| ->timezone(‘America/New_York’);  |  Set the timezone                                  |      
-| :-------------------------------:|:--------------------------------------------------:|
+| ->timezone(‘America/New_York’);  |  Set the timezone                                  |   
 
 
 
