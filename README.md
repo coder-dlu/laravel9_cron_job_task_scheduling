@@ -79,7 +79,6 @@ class DemoCron extends Command
 }
 ```
 ## 3: Register as Task Scheduler
-| :-------------------------------:|:--------------------------------------------------:|
 | ->everyMinute();                 |  Run the task every minute                         |
 | ->everyFiveMinutes();            |  Run the task every five minutes                   |
 | ->everyTenMinutes();             |  Run the task every ten minutes                    |
