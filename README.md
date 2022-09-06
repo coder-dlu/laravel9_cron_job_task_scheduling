@@ -79,8 +79,7 @@ class DemoCron extends Command
 }
 ```
 ## 3: Register as Task Scheduler
-|         A                        |      B        |
-| :-------------------:            |:------------:|
+| :-------------------------------:|:--------------------------------------------------:|
 | ->everyMinute();                 |  Run the task every minute                         |
 | ->everyFiveMinutes();            |  Run the task every five minutes                   |
 | ->everyTenMinutes();             |  Run the task every ten minutes                    |
@@ -98,7 +97,7 @@ class DemoCron extends Command
 | ->quarterly();                   |  Run the task every quarter                        |
 | ->yearly();                      |  Run the task every year                           |
 | ->timezone(‘America/New_York’);  |  Set the timezone                                  |      
-
+| :-------------------------------:|:--------------------------------------------------:|
 
 
 
